@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Geetika Sai Manne — AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    --bg: #F0F1EB;
+    --surface: #FCFCFA;
+    --ink: #14181A;
+    --ink-soft: #5A6560;
+    --accent: #1F5B4A;
+    --accent-soft: #DEE8E0;
+    --accent-2: #A85A34;
+    --line: #D8DBD1;
+    --shadow: rgba(24,32,28,0.08);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101412;
+      --surface: #181D1A;
+      --ink: #ECEEE8;
+      --ink-soft: #9FAAA2;
+      --accent: #7ECBA9;
+      --accent-soft: #1F2C26;
+      --accent-2: #E39B6E;
+      --line: #2A322C;
+      --shadow: rgba(0,0,0,0.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101412;
+    --surface: #181D1A;
+    --ink: #ECEEE8;
+    --ink-soft: #9FAAA2;
+    --accent: #7ECBA9;
+    --accent-soft: #1F2C26;
+    --accent-2: #E39B6E;
+    --line: #2A322C;
+    --shadow: rgba(0,0,0,0.45);
+  }
+  html { scroll-padding-top: 76px; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-color: var(--line); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  header.top {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .top-inner {
+    max-width: 800px; margin: 0 auto; padding: 12px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    flex-wrap: wrap;
+  }
+  .top-id { display: flex; align-items: center; gap: 10px; }
+  .monogram {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--accent); color: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 0.8rem;
+    flex: none;
+  }
+  .top-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1rem; }
+  nav.jump { display: flex; gap: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; }
+  nav.jump a { color: var(--ink-soft); text-decoration: none; position: relative; padding-bottom: 2px; }
+  nav.jump a:hover { color: var(--accent); }
+
+  header.top ~ .wrap .hero {
+    position: relative; padding: 72px 0 44px; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; top: -180px; right: -160px;
+    width: 420px; height: 420px; border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 20%, transparent) 0%, transparent 70%);
+    pointer-events: none; z-index: -1;
+  }
+  .hero .role { font-family: 'IBM Plex Mono', monospace; color: var(--accent); font-size: 0.85rem; margin-bottom: 16px; letter-spacing: 0.02em; }
+  .hero h1 { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(2.3rem, 6vw, 3.5rem); line-height: 1.08; margin: 0 0 20px; letter-spacing: -0.01em; max-width: 15ch; }
+  .hero .lede { max-width: 56ch; color: var(--ink-soft); font-size: 1.06rem; margin-bottom: 30px; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 10px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; margin-bottom: 40px; }
+  .contact-row a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+  .contact-row a:hover { border-color: var(--accent); color: var(--accent); }
+
+  .stats-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    padding-top: 28px; border-top: 1px solid var(--line);
+  }
+  .stat .num { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(1.5rem, 3.2vw, 2rem); color: var(--accent); line-height: 1; }
+  .stat .label { margin-top: 6px; font-size: 0.82rem; color: var(--ink-soft); }
+  @media (max-width: 560px) {
+    .stats-strip { grid-template-columns: 1fr 1fr; }
+  }
+
+  section { padding: 48px 0; border-top: 1px solid var(--line); }
+  section > h2 {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.5rem; margin: 0 0 28px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section > h2::before {
+    content: ""; width: 9px; height: 9px; background: var(--accent-2); border-radius: 1px;
+    display: inline-block; flex: none;
+  }
+
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ""; position: absolute; top: 6px; bottom: 6px; left: 160px; width: 1px;
+    background: var(--line);
+  }
+  .entry { position: relative; display: grid; grid-template-columns: 150px 1fr; gap: 6px 20px; margin-bottom: 34px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry .meta { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--ink-soft); padding-top: 3px; }
+  .entry .meta::after {
+    content: ""; position: absolute; top: 4px; left: 156px; width: 9px; height: 9px;
+    border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--bg);
+  }
+  .entry .meta .place { display: block; margin-top: 2px; }
+  .entry .role-line { font-weight: 600; font-size: 1.03rem; }
+  .entry .org { color: var(--ink-soft); font-weight: 400; }
+  .entry ul { margin: 11px 0 0; padding-left: 18px; }
+  .entry li { margin-bottom: 8px; }
+  .entry li::marker { color: var(--accent-2); }
+
+  @media (max-width: 620px) {
+    .timeline::before { display: none; }
+    .entry { grid-template-columns: 1fr; }
+    .entry .meta { padding-top: 0; margin-bottom: 4px; }
+    .entry .meta::after { display: none; }
+  }
+
+  .skills-hint { font-size: 0.88rem; color: var(--ink-soft); margin: -16px 0 26px; }
+  .skills-grid { display: grid; gap: 18px; }
+  .skill-row { display: grid; grid-template-columns: 150px 1fr; gap: 6px 20px; align-items: start; }
+  .skill-row .cat { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--ink-soft); padding-top: 8px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 9px; }
+  .tag {
+    font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 0.82rem;
+    border: 1px solid transparent; border-radius: 999px; padding: 6px 14px;
+    background: var(--accent-soft); color: var(--ink);
+    cursor: pointer; transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.1s;
+  }
+  .tag:hover { box-shadow: inset 0 0 0 1px var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .tag:active { transform: translateY(0); }
+  .tag.active { background: var(--accent); color: var(--surface); box-shadow: 0 3px 10px -3px var(--shadow); }
+  @media (max-width: 620px) {
+    .skill-row { grid-template-columns: 1fr; }
+    .skill-row .cat { padding-top: 0; }
+  }
+
+  .skill-status {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 26px;
+    padding: 12px 16px; border-radius: 8px;
+    background: var(--accent-soft);
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+  }
+  .skill-status button {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+    background: none; border: none; color: var(--accent); cursor: pointer; padding: 0;
+    font-weight: 500;
+  }
+
+  .entry { transition: opacity 0.25s ease, transform 0.25s ease; }
+  .entry.dim { opacity: 0.3; }
+  .entry.match {
+    background: var(--accent-soft);
+    margin-left: -16px; margin-right: -16px; padding: 14px 16px;
+    border-radius: 10px;
+  }
+  .entry.match .meta::after { left: 172px; box-shadow: 0 0 0 4px var(--accent-soft); }
+
+  .cert-list { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 0.95rem; }
+  .cert-list li { list-style: none; }
+  .cert-list { padding: 0; margin: 0; }
+  .cert-list li::before { content: "— "; color: var(--accent-2); }
+
+  footer { padding: 56px 0 90px; border-top: 1px solid var(--line); }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .footer-inner h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.4rem; margin: 0 0 6px; }
+  .footer-inner p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+  .footer-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: var(--surface); text-decoration: none;
+    font-weight: 500; font-size: 0.9rem; padding: 11px 20px; border-radius: 999px;
+    flex: none; transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .footer-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 16px -6px var(--shadow); }
+  .footer-meta { margin-top: 30px; color: var(--ink-soft); font-size: 0.8rem; font-family: 'IBM Plex Mono', monospace; }
+  .footer-meta a { color: var(--ink-soft); }
+
+  ::selection { background: var(--accent); color: var(--surface); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero h1 { animation: rise 0.7s ease-out; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="top-id">
+      <div class="monogram">GM</div>
+      <div class="top-name">Geetika Sai Manne</div>
+    </div>
+    <nav class="jump">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="role">AI / ML Engineer</div>
+    <h1>Building the pipelines that get models into production.</h1>
+    <p class="lede">I work at the intersection of MLOps and Generative AI — automating data and ML pipelines, monitoring models in production, and building things like fraud detectors and a GPT-style model trained from scratch.</p>
+    <div class="contact-row">
+      <a href="tel:+12144301304">+1 214-430-1304</a>
+      <a href="mailto:mannegeetika6@gmail.com">mannegeetika6@gmail.com</a>
+      <a href="https://linkedin.com/in/geetika-manne" target="_blank" rel="noopener">linkedin.com/in/geetika-manne</a>
+      <a href="https://github.com/GeetikaManne315" target="_blank" rel="noopener">github.com/GeetikaManne315</a>
+    </div>
+    <div class="stats-strip">
+      <div class="stat"><div class="num">1M+</div><div class="label">records analyzed across research projects</div></div>
+      <div class="stat"><div class="num">284,807</div><div class="label">transactions modeled for fraud detection</div></div>
+      <div class="stat"><div class="num">30%</div><div class="label">gain in ETL pipeline efficiency</div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+    <div class="entry" data-id="e1">
+      <div class="meta">Jul 2025 – Present<span class="place">San Antonio, TX</span></div>
+      <div>
+        <div class="role-line">AI/ML Engineer <span class="org">— HCLTech</span></div>
+        <ul>
+          <li>Support a client-facing ML platform focused on deploying, monitoring, and optimizing models in production.</li>
+          <li>Build and automate scalable ML and data pipelines using Python, SQL, Snowflake, dbt, and Git.</li>
+          <li>Orchestrate ETL and ML workflows with Apache Airflow, Control-M, Domino Data Lab, and IBM DataStage.</li>
+          <li>Apply MLOps practices — version control, CI/CD, pipeline automation, and model-drift monitoring.</li>
+          <li>Troubleshoot production issues and build dashboards reporting model performance to stakeholders.</li>
+          <li>Document pipelines and orchestration to support maintainability and client compliance.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry" data-id="e2">
+      <div class="meta">Aug 2023 – Dec 2023<span class="place">Denton, TX</span></div>
+      <div>
+        <div class="role-line">Student Assistant <span class="org">— University of North Texas</span></div>
+        <ul>
+          <li>Analyzed 1M+ records across 5+ research projects and built Power BI dashboards for trend analysis.</li>
+          <li>Developed automated ETL workflows with Apache Airflow, improving processing efficiency by 30%.</li>
+          <li>Assisted with ML development using scikit-learn and Google Vertex AI; mentored 30+ students per semester.</li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="timeline">
+    <div class="entry" data-id="p1">
+      <div class="meta">Vibe Coding<span class="place">Hackathon</span></div>
+      <div>
+        <div class="role-line">AI/ML Fraud Detection with Snowflake Cortex</div>
+        <ul>
+          <li>Built an end-to-end fraud detection pipeline using Snowflake Cortex ML Classification and Gradient Boosting on 284,807 credit-card transactions with a 0.17% fraud rate.</li>
+          <li>Developed Snowflake scoring workflows and an interactive Streamlit dashboard for transaction-level risk visualization.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry" data-id="p2">
+      <div class="meta">Independent<span class="place">AI/ML Project</span></div>
+      <div>
+        <div class="role-line">Tiny Language Model from Scratch — Data Distillation</div>
+        <ul>
+          <li>Built a small GPT-style transformer from scratch in raw PyTorch, with no pretrained weights — model architecture, training loop, and data pipeline all hand-built.</li>
+          <li>Used Qwen2.5-1.5B-Instruct as a teacher model to generate a synthetic short-story corpus, via a teacher → synthetic data → student training pipeline.</li>
+          <li>Ran GPU-based training on T4 environments, scaling dataset size and iterations after end-to-end validation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry" data-id="p3">
+      <div class="meta">Jan 2025<span class="place">University Project</span></div>
+      <div>
+        <div class="role-line">Clinical Text Summarization</div>
+        <ul>
+          <li>Fine-tuned and evaluated BART, T5, PEGASUS, DeepSeek R1, and LLaMA on 14,438+ MIMIC-IV clinical notes.</li>
+          <li>Built preprocessing, training, and ROUGE evaluation pipelines, comparing architectures for clinical summarization.</li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="skills-hint">Click a skill to see where it shows up in my experience and projects below.</p>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <div class="cat">Programming</div>
+        <div class="tags">
+          <button class="tag" data-related="e1,e2,p1,p2,p3">Python</button>
+          <button class="tag" data-related="e1,e2">SQL</button>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="cat">ML &amp; AI</div>
+        <div class="tags">
+          <button class="tag" data-related="p2,p3">PyTorch</button>
+          <button class="tag" data-related="e2">scikit-learn</button>
+          <button class="tag" data-related="p2,p3">Hugging Face Transformers</button>
+          <button class="tag" data-related="p2,p3">NLP</button>
+          <button class="tag" data-related="p1,p2">Generative AI</button>
+          <button class="tag" data-related="p2,p3">Transformer Architectures</button>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="cat">LLM / GenAI</div>
+        <div class="tags">
+          <button class="tag" data-related="p2">Qwen2.5</button>
+          <button class="tag" data-related="p2,p3">LLaMA</button>
+          <button class="tag" data-related="p3">DeepSeek</button>
+          <button class="tag" data-related="p1">Snowflake Cortex AI</button>
+          <button class="tag" data-related="p3">LLM Fine-tuning</button>
+          <button class="tag" data-related="p2">Data Distillation</button>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="cat">Data Engineering</div>
+        <div class="tags">
+          <button class="tag" data-related="e1,p1">Snowflake</button>
+          <button class="tag" data-related="e1">dbt</button>
+          <button class="tag" data-related="e1,e2">Apache Airflow</button>
+          <button class="tag" data-related="e1">IBM DataStage</button>
+          <button class="tag" data-related="e1">Control-M</button>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="cat">MLOps</div>
+        <div class="tags">
+          <button class="tag" data-related="e1">Git</button>
+          <button class="tag" data-related="e1">CI/CD</button>
+          <button class="tag" data-related="e1">Model Monitoring</button>
+          <button class="tag" data-related="e1">Data Quality Monitoring</button>
+          <button class="tag" data-related="e1">Model Drift Monitoring</button>
+          <button class="tag" data-related="e1">Domino Data Lab</button>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="cat">Cloud &amp; Analytics</div>
+        <div class="tags">
+          <button class="tag" data-related="e2">GCP — BigQuery</button>
+          <button class="tag" data-related="e2">GCP — Vertex AI</button>
+          <button class="tag" data-related="e2">Power BI</button>
+        </div>
+      </div>
+    </div>
+    <div id="skillStatus" class="skill-status" hidden>
+      <span id="skillStatusText"></span>
+      <button id="skillClear" type="button">Clear ×</button>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="meta">Aug 2023 – May 2025<span class="place">Denton, TX</span></div>
+      <div>
+        <div class="role-line">M.S. in Data Science <span class="org">— University of North Texas</span></div>
+        <p style="color:var(--ink-soft); margin: 8px 0 0; font-size: 0.93rem;">Coursework: Machine Learning, Statistical Methods for Data Science, Data Visualization, Big Data Technologies, Database Management Systems, Advanced Algorithms, Time Series Analysis, Deep Learning, Artificial Intelligence.</p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="meta">Jun 2019 – Jun 2023<span class="place">Hyderabad, India</span></div>
+      <div>
+        <div class="role-line">B.S. in Computer Science <span class="org">— GITAM University</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <ul class="cert-list">
+      <li>AWS Certified Cloud Practitioner</li>
+      <li>Google Cloud Generative AI Certification</li>
+      <li>Google Data Analytics</li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <h3>Let's talk</h3>
+        <p>Open to AI/ML engineering roles — happy to walk through any project above.</p>
+      </div>
+      <a class="footer-cta" href="mailto:mannegeetika6@gmail.com">Email me →</a>
+    </div>
+    <div class="footer-meta">
+      Geetika Sai Manne · <a href="tel:+12144301304">+1 214-430-1304</a> · <a href="https://linkedin.com/in/geetika-manne" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/GeetikaManne315" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var tags = Array.prototype.slice.call(document.querySelectorAll('.tag'));
+  var entries = Array.prototype.slice.call(document.querySelectorAll('.entry[data-id]'));
+  var statusBar = document.getElementById('skillStatus');
+  var statusText = document.getElementById('skillStatusText');
+  var clearBtn = document.getElementById('skillClear');
+  var active = null;
+
+  function clear() {
+    active = null;
+    tags.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
+    entries.forEach(function (e) { e.classList.remove('dim', 'match'); });
+    statusBar.hidden = true;
+  }
+
+  function apply(tag) {
+    var related = (tag.dataset.related || '').split(',').filter(Boolean);
+    tags.forEach(function (t) { t.classList.toggle('active', t === tag); t.setAttribute('aria-pressed', t === tag ? 'true' : 'false'); });
+
+    if (related.length === 0) {
+      entries.forEach(function (e) { e.classList.add('dim'); e.classList.remove('match'); });
+      statusText.textContent = tag.textContent + ' — not directly tied to a listed entry.';
+    } else {
+      entries.forEach(function (e) {
+        var isMatch = related.indexOf(e.dataset.id) !== -1;
+        e.classList.toggle('match', isMatch);
+        e.classList.toggle('dim', !isMatch);
+      });
+      var count = related.length;
+      statusText.textContent = 'Showing ' + count + ' item' + (count === 1 ? '' : 's') + ' using ' + tag.textContent + '.';
+      var first = document.querySelector('.entry.match');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    statusBar.hidden = false;
+  }
+
+  tags.forEach(function (tag) {
+    tag.setAttribute('aria-pressed', 'false');
+    tag.addEventListener('click', function () {
+      if (active === tag) { clear(); return; }
+      active = tag;
+      apply(tag);
+    });
+  });
+
+  clearBtn.addEventListener('click', clear);
+})();
+</script>
+</body>
+</html>
